@@ -28,7 +28,7 @@ function mathOp ($op,...$numbers) {
         //assegno il primo valore dell'array
         $result = $numbers[0];
 
-        //al sottraendo assegno il gli altri valori, a partire da quello in posizione [1]
+        //al sottraendo assegno gli altri valori, a partire da quello in posizione [1]
         $underlinings = array_slice($numbers, 1);
 
         foreach ($underlinings as $underlining) {
