@@ -26,10 +26,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about.html">About</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="post.html">Sample Post</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="contact.html">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.php">Home</a></li>
                     </ul>
                 </div>
             </div>
@@ -55,10 +52,18 @@
                     <?php
                         $url = 'https://jsonplaceholder.typicode.com/posts';
 
-                        $data = file_get_contents($url);
+                        $context = stream_context_create([
+                            'http' => [
+                                'ignore_errors' => 1
+                            ]
+                        ]);
 
-                        if($data) { 
+                        $data = file_get_contents($url, false, $context);
+                        $date = date('Y -m -d H:m');
+
+                        if(Is_array($data)) { 
                             $dataObj = json_decode($data);
+                            if($dataObj && is_array($dataObj)) {
                             foreach($dataObj as $post) {
                     ?>
                     <div class="post-preview">
@@ -68,10 +73,16 @@
                         <p class="post-meta">
                             <a href="<?php echo $url .'/'. $post->id?>">View post</a>
                         </p>
+                        <p>
+                            Posted at <?php echo $date ?>
+                        </p>
                     </div>
                     <!-- Divider-->
                     <hr class="my-4" />
                     <?php
+                                }
+                            } else {
+                                echo 'NO POSTS';
                             }
                         }
                     ?>
