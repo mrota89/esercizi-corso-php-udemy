@@ -12,7 +12,7 @@
  */
 class Car {
    public $color;
-   private $fuel;
+   protected $fuel;
 
    function __construct($customColor, $customFuel) {
       $this->color = $customColor;
@@ -35,6 +35,7 @@ $auto = new Car('rosso', 'benzina');
 //cambio il colore della proprietà pubblica 'colore', quindi accessibile e modificabile dall'esterno
 $auto->color = "blue"; //color: blue
 
-//accedo e modifico la proprietà privata fuel con i metodi setter e getter
+//accedo e modifico la proprietà protetta fuel con i metodi setter e getter
 $auto->getFuel();
 $auto->setFuel('gasolio');
+
