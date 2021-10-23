@@ -35,5 +35,6 @@ class Car {
 
  $camion = new Truck('red', 'benzina', 32);
  var_dump($camion);
+ 
  $camion->setFuel('gasolio');
  echo $camion->getFuel(); //gasolio
