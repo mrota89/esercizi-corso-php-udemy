@@ -1,7 +1,7 @@
 <?php
 /**
  * Estendere una classe in PHP
- * in php, si puoò estendere una classe usando la keyword extends
+ * in php, si può estendere una classe usando la keyword extends
  * Estendendo una classe, la classe figlia eredita le proprietà e i metodi dalla classe parent, compresi i metodi setter, getter e __contruct.
  */
 class Car {
